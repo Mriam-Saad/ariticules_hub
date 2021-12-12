@@ -1,0 +1,190 @@
+<?php
+
+/**
+ * @file
+ * aricleshubtheme theme file.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+
+
+/**
+ *
+ * Implements HOOK_views-view-fields()
+ */
+function aricleshubtheme_preprocess_views_view_fields__all_hubs__page_1(&$variables) {
+         //Get base url
+         global $base_path;
+         $variables['base_path'] = $base_path;
+
+          //Get View
+          $view = \Drupal\views\Views::getView('all_articles');
+          $view->setDisplay('block_1');
+          $view->execute();
+
+          $results=[];
+          foreach ($view->result as $id => $result) {
+              $node = $result->_entity;
+              // Get the ID value.
+              $results['nid'] = $node->get('nid')->value;
+              // Get the title value.
+              $results['title'] = $node->get('title')->value;
+              // Get the description value.
+              $results['description'] = get_snippet($node->get('field_description')->value, 20);
+              // Get the date value.
+              $results['date'] = date("d-m-Y", $node->get('created')->value);
+              // Get the video_or_image value.
+              $results['video_or_image'] = $node->get('field_video_or_image')->value;
+              //check image field is not empty
+              if($node->get('field_article_image')->entity != null)
+              // Get the image value.
+              $results['image'] = $node->get('field_article_image')->entity->getFileUri();
+              else
+               $results['image'] = null;
+              //check video field is not empty
+              if($node->get('field_video')->entity != null){
+              // Get the video value.
+              $results['video'] = file_create_url($node->get('field_video')->entity->getFileUri());
+              $results['video_extention'] = $node->get('field_video')->entity->getMimeType();
+              }
+              else {
+              $results['video'] = null;
+              $results['video_extention']= null;
+              }
+              $variables['aricles_data'][]=$results;
+
+                          }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function aricleshubtheme_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+    // Alter login form and add own custom submit handler.
+    $form['#submit'][] = '_aricleshubtheme_user_login_form_submit';
+}
+
+/**
+ * Custom submit handler for login form.
+ */
+function _aricleshubtheme_user_login_form_submit($form, FormStateInterface $form_state) {
+    $form_state->setRedirect('view.all_hubs.page_1');
+}
+
+
+/**
+ *
+ * Implements HOOK_preprocess_node()
+ */
+function aricleshubtheme_preprocess_node(&$vars) {
+        //Get base url
+         global $base_path;
+         $vars['base_path'] = $base_path;
+         $vars['theme_base_path'] = $base_path . $vars['directory'];
+
+
+if($vars['node']->getType() == "in_article"){
+if (($article_node = \Drupal::routeMatch()->getParameter('node')) && $article_node instanceof \Drupal\node\NodeInterface) {
+
+
+
+         //Get article category ID
+         $tid=$article_node->get('field_article_category')->entity->id();
+          $args = [$tid];
+          //Get View
+          $view = \Drupal\views\Views::getView('all_articles');
+          $view->setDisplay('block_2');
+          $view->setArguments($args);
+          $view->execute();
+
+
+          $results=[];
+          foreach ($view->result as $id => $result) {
+              $node = $result->_entity;
+
+              //exclude current node from related articles
+//              if($node->get('nid')->value != $article_node->get('nid')->value ){
+                // Get the ID value.
+              $results['nid'] = $node->get('nid')->value;
+              // Get the title value.
+              $results['title'] = $node->get('title')->value;
+              // Get the description value.
+              $results['description'] = get_snippet($node->get('field_description')->value, 15);
+              $results['full_description'] = $node->get('field_description')->value;
+               // Get the date value.
+              $results['date'] = date("d-m-Y", $node->get('created')->value);
+              // Get the video_or_image value.
+              $results['video_or_image'] = $node->get('field_video_or_image')->value;
+              //check image field is not empty
+              if($node->get('field_article_image')->entity != null)
+              // Get the image value.
+              $results['image'] = $node->get('field_article_image')->entity->getFileUri();
+              else
+               $results['image'] = null;
+              //check video field is not empty
+             if($node->get('field_video')->entity != null){
+              // Get the video value.
+              $results['video'] = file_create_url($node->get('field_video')->entity->getFileUri());
+              $results['video_extention'] = $node->get('field_video')->entity->getMimeType();
+              }
+              else {
+              $results['video'] = null;
+              $results['video_extention']= null;
+              }
+              $results['article_full_date'] = date("d M Y", $node->get('created')->value);
+              $results['article_time_ago'] = time_elapsed_string('@'.$node->get('created')->value);;
+              $vars['aricles_data'][]=$results;
+
+  //                    }
+                  }
+         }
+ }
+}
+
+
+function get_snippet( $str, $wordCount = 10 ) {
+  return implode(
+    '',
+    array_slice(
+      preg_split(
+        '/([\s,\.;\?\!]+)/',
+        $str,
+        $wordCount*2+1,
+        PREG_SPLIT_DELIM_CAPTURE
+      ),
+      0,
+      $wordCount*2-1
+    )
+  );
+}
+
+
+function time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
+
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
+
+    $string = array(
+        'y' => 'year',
+        'm' => 'month',
+        'w' => 'week',
+        'd' => 'day',
+        'h' => 'hour',
+        'i' => 'minute',
+        's' => 'second',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' ago' : 'just now';
+}

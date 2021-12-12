@@ -1,0 +1,6 @@
+name: currentweather
+type: module
+description: Current Weather Module.
+package: Custom
+core_version_requirement: '^8.8 || ^9'
+

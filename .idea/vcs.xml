@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/addtoany" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/conditional_fields" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/social_sharing" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/twig_tweak" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/modules/contrib/views_field_view" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/themes/contrib/bootstrap4" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/web/themes/contrib/bootstrap_barrio" vcs="Git" />
+  </component>
+</project>

@@ -1,0 +1,151 @@
+/*------------------------------------- globals ----------------------------------*/
+.btn-primary {
+    background-color: #7ECCE3 !important;
+    border-color: #7ECCE3;
+}
+/*------------------------------------- page header ----------------------------------*/
+.main-header {
+    background-image: url(../images/banners/main-banner.jpg);
+    height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+.main-header--title {
+    color: white;
+    font-weight: bold;
+}
+/*------------------------------------- card article ----------------------------------*/
+.card-article {
+    box-shadow: -1px -1px 10px -2px rgba(0,0,0,0.13);
+    -webkit-box-shadow: -1px -1px 10px -2px rgba(0,0,0,0.13);
+    -moz-box-shadow: -1px -1px 10px -2px rgba(0,0,0,0.13);
+}
+.card-article .card-title {
+    font-weight: bold;
+    color: #7ECCE3;
+}
+.card-article .date {
+    font-weight: bolder;
+    font-size: 12px;
+}
+.card-article .btn-plus{
+    width: 30px;
+    height: 30px;
+}
+.card-article .btn-plus svg{
+    fill: #7ECCE3;
+}
+.card-article .card-img .add-to--fav{
+    width: 25px;
+    right: 10px;
+    top: 5px;
+}
+.card-article .card-img .add-to--fav svg{
+    fill: white;
+}
+.card-article .card-img .add-to--fav.active svg {
+    fill: red;
+}
+/*------------------------------------- news Letter ----------------------------------*/
+.news-letter {
+    background-color: #FFE500;
+}
+.news-letter .txt h3{font-weight: bolder;}
+.news-letter .txt p {font-size: 14px;}
+.news-letter form .form-control {
+    border-radius: 0px;
+    min-width: 70%;
+}
+.news-letter form .btn {
+    border-radius: 0px;
+}
+/*------------------------------------- footer-nav ----------------------------------*/
+.footer-nav{
+    background-color: #7ECCE3;
+}
+.footer-nav ul li a {
+    color: white;
+    font-size: 17px;
+    border-bottom: 2px solid #FFE500;
+}
+/*------------------------------------- footer-nav ----------------------------------*/
+.footer-main {
+    background-color: #343881;
+}
+.footer-main .social-links .nav-link svg {
+    fill: white;
+    width: 20px;
+    height: 20px;
+}
+.footer-main .nav-link {
+    color: white;
+}
+/*------------------------------------- footer-nav ----------------------------------*/
+.news-nav .nav .nav-link {
+    border-bottom: 2px solid #7ECCE3;
+    border-radius: 0px;
+}
+.news-nav .nav .nav-link.active{
+    background: #ECF7FB;
+}
+.news-nav .nav .nav-link * {
+    color: black;
+}
+.news-nav .nav .nav-link .news-date,
+.news-nav .nav .nav-link .news-title {font-weight: bold;}
+.news-nav .nav .nav-link .news-title {
+    color: #7ECCE3;
+}
+.news-nav .news-tabs {
+    height: 300px;
+}
+.mCSB_dragger .mCSB_dragger_bar {
+    display: none;
+}
+.mCSB_scrollTools .mCSB_draggerRail {
+    background-color: #7ECCE3;
+    width: 6px;
+}
+/*------------------------------------- card-details ----------------------------------*/
+.card-details {
+    box-shadow: -1px -1px 10px -2px rgba(0,0,0,0.13);
+    -webkit-box-shadow: -1px -1px 10px -2px rgba(0,0,0,0.13);
+    -moz-box-shadow: -1px -1px 10px -2px rgba(0,0,0,0.13);
+}
+.tab-header {
+  color: #2B2C6D;
+  font-size: 50px;
+
+}
+.timer {
+  width: 20px;
+  height: 20px;
+  fill: #D1FAFE;
+}
+.date-text {
+  position: absolute;
+  display: inline-block;
+}
+.calender {
+  width: 20px;
+  height: 20px;
+  fill: #D1FAFE;
+  margin-left: 100px;
+}
+.card-detais--actions {
+  background-color: #7DCBE1;
+}
+.action-like p{
+  margin-right: 300px;
+  color: white;
+}
+.fav svg{
+  fill: white;
+  width: 20px;
+  height: 20px;
+}
+.fav-text{
+  color: white;
+}
+

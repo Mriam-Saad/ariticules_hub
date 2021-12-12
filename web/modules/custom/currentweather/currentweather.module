@@ -1,0 +1,37 @@
+<?php
+use Symfony\Component\HttpFoundation;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
+use GuzzleHttp\Exception\RequestException;
+
+
+
+/**
+ * Implements hook_form_FORM_alter().
+ */
+function currentweather_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+ //replace article's machine name
+  if ($form_id == "node_type_edit_form" && $form['type']['#default_value']=="in_article"){
+    $form['type']['#default_value']="in-article";
+  }
+  //replace hub's machine name
+  if ($form_id == "node_type_edit_form" && $form['type']['#default_value']=="in_hub"){
+    $form['type']['#default_value']="in-hub";
+  }
+}
+
+
+
+
+/**
+ * Implements hook_theme().
+ */
+function currentweather_theme($existing, $type, $theme, $path){
+  return [
+    'weather_block' => [
+      'variables' => [
+      ],
+      'path' => \Drupal::service('extension.list.module')->getPath('currentweather'),
+    ]
+  ];
+}

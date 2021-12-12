@@ -1,0 +1,14 @@
+global-styling:
+  css:
+    theme:
+      css/style.css: {}
+      css/jquery.mCustomScrollbar.min.css: {}
+      css/bootstrap.min.css: {}
+      css/main.css: {}
+
+  js:
+    js/jquery.mCustomScrollbar.concat.min.js: {}
+    js/bootstrap.min.js: {}
+    js/main.js: {}
+  dependencies:
+    - core/jquery

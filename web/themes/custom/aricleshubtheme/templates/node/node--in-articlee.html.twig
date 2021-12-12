@@ -1,0 +1,177 @@
+
+
+
+<div class="app-content my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-3 pr-0">
+        <aside class="news-nav">
+          <a href="{{ base_path }}allhubs" class="back-link">
+            <span>go to back</span>
+          </a>
+          <div class="news-tabs mt-4">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              {% set selected=0 %}
+
+              {% for article in aricles_data %}
+                {% if selected ==0 %}
+              <a href="#v-pills-news{{ article.nid }}" class="nav-link active" id="v-pills-news1-tab{{ article.nid }}" data-toggle="pill"  role="tab" aria-controls="v-pills-news{{ article.nid }}" aria-selected="true">
+              {% else %}
+                <a href="#v-pills-news{{ article.nid }}" class="nav-link active" id="v-pills-news1-tab{{ article.nid }}" data-toggle="pill"  role="tab" aria-controls="v-pills-news{{ article.nid }}" aria-selected="false">
+                {% endif %}
+                <h3 class="news-title mb-0">{{ article.title }}</h3>
+                <date class="news-date">{{ article.date }}</date>
+                <p class="news-desc">{{ article.description|striptags|render }}..etc</p>
+              </a>
+
+                {% set selected=selected+1 %}
+
+                {% endfor %}
+            </div>
+          </div>
+        </aside>
+      </div>
+      <div class="col-lg-8 col-md-9 pl-0">
+        <div class="tab-content" id="v-pills-tabContent">
+          {% set count=0 %}
+          {% for article in aricles_data %}
+            {% if count ==0 %}
+          <div class="tab-pane fade show active" id="v-pills-news{{ article.nid }}" role="tabpanel" aria-labelledby="v-pills-news1-tab{{ article.nid }}">
+            {% else %}
+              <div class="tab-pane fade show" id="v-pills-news{{ article.nid }}" role="tabpanel" aria-labelledby="v-pills-news1-tab{{ article.nid }}">
+            {% endif %}
+              <div class="card card-details border-0">
+              <div class="container">
+              <div class="card-detais--header p-4">
+                <b class="tab-header"> {{ article.title }}</b>
+         <div class="row mb-1 mt-5">
+             <div class="timer col-s-6">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                       viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
+<g>
+  <g>
+    <path d="M244.5,0C109.3,0,0,109.3,0,244.5S109.3,489,244.5,489S489,379.8,489,244.5S379.8,0,244.5,0z M265.3,447.4V437
+			c0-11.4-9.4-20.8-20.8-20.8s-20.8,9.4-20.8,20.8v10.4c-95.8-9.8-172.3-86.3-182-182H51c11.4,0,20.8-9.4,20.8-20.8
+			s-9.4-20.8-20.8-20.8h-9.3c9.8-95.8,86.3-172.3,182-182V51c0,11.4,9.4,20.8,20.8,20.8s20.8-9.4,20.8-20.8v-9.3
+			c95.8,9.8,172.3,86.3,182,182H437c-11.4,0-20.8,9.4-20.8,20.8s9.4,20.8,20.8,20.8h10.4C437.6,361.1,361.1,437.6,265.3,447.4z"/>
+    <path d="M244.5,124.9c-11.4,0-20.8,9.4-20.8,20.8v91.5L129,353.8c-7.3,9.4-5.2,21.8,3.1,29.1c11.6,8.5,23.9,2.1,28.1-3.1
+			l101-122.8c2.1-3.1,4.2-7.3,4.2-12.5v-98.8C265.3,134.2,256,124.9,244.5,124.9z"/>
+  </g>
+</g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+</svg>
+                  <p class="date-text p-1"> {{ article_time_ago }}</p>
+               </div>
+             <div class="calender col-s-6">
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve">
+<path d="M404.465,23.677h-53.131V0H330.03v23.677h-74.378V0h-21.304v23.677h-74.373V0h-21.304v23.677H85.535
+	c-5.883,0-10.652,4.769-10.652,10.652v445.019c0,5.883,4.769,10.652,10.652,10.652h318.93c5.883,0,10.652-4.769,10.652-10.652
+	V34.329C415.117,28.446,410.348,23.677,404.465,23.677z M138.671,44.981v23.681h21.304V44.981h74.373v23.681h21.304V44.981h74.378
+	v23.681h21.304V44.981h42.479v74.914H96.187V44.981H138.671z M96.187,468.696V141.199h297.626v327.497H96.187z"/>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+</svg>
+               <p class="date-text p-1">{{ article_full_date }}</p>
+             </div>
+              </div>
+              </div>
+                </header>
+              <div class="card-detais--actions py-2 px-4">
+                <div class="container">
+                <div class="row mt-2">
+                  <div class="col-s-6 action-like">
+                    <p>Share: </p>
+                    {{ content.addtoany }}
+                  </div>
+                  <div class="col-s-6">
+                    <a href="javascript:;" class="fav">
+                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                           viewBox="0 0 471.701 471.701" style="enable-background:new 0 0 471.701 471.701;" xml:space="preserve">
+                                        <g>
+                                          <path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1
+                                                c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4c0,34.9,13.7,67.6,38.4,92.3
+                                                l187.8,187.8c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-3.9l188.2-187.5c24.7-24.7,38.3-57.5,38.3-92.4
+                                                C471.801,124.501,458.301,91.701,433.601,67.001z M414.401,232.701l-178.7,178l-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3
+                                                s10.7-53.7,30.3-73.2c19.5-19.5,45.5-30.3,73.1-30.3c27.7,0,53.8,10.8,73.4,30.4l22.6,22.6c5.3,5.3,13.8,5.3,19.1,0l22.4-22.4
+                                                c19.6-19.6,45.7-30.4,73.3-30.4c27.6,0,53.6,10.8,73.2,30.3c19.6,19.6,30.3,45.6,30.3,73.3
+                                                C444.801,187.101,434.001,213.101,414.401,232.701z"/>
+                                        </g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                        <g></g>
+                                    </svg>
+                    </a>
+                  </div>
+                  <p class="ml-2 fav-text">Like this artticle</p>
+                  </div>
+              </div>
+              </div>
+                <div class="card-detais--content px-4 py-3">
+                  <div class="container">
+                    <div class="text-center">
+                      {% if article.video_or_image == "Image" %}
+
+                      <img  src="{{ file_url(article.image) }}"  alt="...">
+                      {% endif %}
+                    </div>
+
+                <p>
+                  {{ article.full_description|striptags|render }}
+                </p>
+              </div>
+                </div>
+            </div>
+
+          </div>
+          </div>
+            {% set count=count+1 %}
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+{#    {{ drupal_block("weather_block") }}#}
+
+  </div>
+</div>
+</div>

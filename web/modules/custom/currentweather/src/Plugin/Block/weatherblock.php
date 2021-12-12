@@ -26,9 +26,8 @@ class weatherblock extends BlockBase {
 # Part 1 (get latitude & longitude)
 
       //get visitor ip address
-      $ip = Drupal::request()->getClientIp();
-      //if you are locally then uncomment this line
-   //   $ip='1.2.3.4';
+    //  $ip = Drupal::request()->getClientIp();
+      $ip='1.2.3.4';
       $api_1 = 'https://ipapi.co/' . $ip . '/latlong/';
       //get visitor location
       $location = file_get_contents($api_1);

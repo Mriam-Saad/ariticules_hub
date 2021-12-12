@@ -4,6 +4,7 @@ namespace Drupal\currentweather\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Session\AccountInterface;
+use Symfony\Component\HttpFoundation;
 
 /**
  * Provides a 'weatherblock' block.
